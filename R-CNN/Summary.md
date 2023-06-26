@@ -1,5 +1,5 @@
 # R-CNN
-## Rich feature hierarchies for accurate object detection and semantic segmentation, CVPR, 2014
+### Rich feature hierarchies for accurate object detection and semantic segmentation, CVPR, 2014
 ---
 > object detection 분야에서 딥러닝 방식 중 하나
 >> 2-stage detector: 1.문제의 위치를 찾고, 2. 분류 문제를 순차적으로 해결
