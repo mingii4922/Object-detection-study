@@ -3,6 +3,7 @@
 ---
 > object detection 분야에서 딥러닝 방식 중 하나
 >> 2-stage detector: 1.문제의 위치를 찾고, 2. 분류 문제를 순차적으로 해결
+>> 
 >> 1-stage detector: 두 문제(위치+분류)를 동시에 수행
 ---
 ![object detection](https://github.com/mingii4922/object-detection/assets/79297596/9fdca7c8-5674-40b4-8a3c-e519cd22617e)
