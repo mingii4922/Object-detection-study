@@ -15,7 +15,7 @@ instance segmentation: object의 위치를 edge로 찾는 것: 각 object는 서
 semantic segmentation: instance segmentation과 달리, 동일한 class를 가진 object는 같은 색으로 분할
 
 ---
-<img src="![R-cnn1](https://github.com/mingii4922/object-detection/assets/79297596/b1c48a7f-3201-4726-ab9f-4ab5c9355b86)", height="50x", width="50px>
+<img src="![R-cnn1](https://github.com/mingii4922/object-detection/assets/79297596/b1c48a7f-3201-4726-ab9f-4ab5c9355b86)" width="300" height="300">
 
 + 해당 논문은 2-stage detector로 구성됨
   
