@@ -32,37 +32,37 @@ semantic segmentation: instance segmentation과 달리, 동일한 class를 가�
 ---
 1. Region proposal
 
->>Selective Search 알고리즘을 이용해 임의의 bounding box를 설정
->>
->> Selective Search: segmentation 분야에 많이 쓰이며, object와 주변간의 색감(color), 질감(texture) 등을 파악하여 인접한영역끼리 유사도를 측정해 유사한 pixel끼리 합쳐나가는 방식
->>
->> sliding window는 너무 많은 영역에 대해 연산을 거치기 때문에 느리다는 단점이 존재
->>
->> 해당 연산을 거친 ROI 영역을 CNN의 입력 값에 넣어줌 -> 총 2000개의 ROI feature map
+* Selective Search 알고리즘을 이용해 임의의 bounding box를 설정
+* 
+*  Selective Search: segmentation 분야에 많이 쓰이며, object와 주변간의 색감(color), 질감(texture) 등을 파악하여 인접한영역끼리 유사도를 측정해 유사한 pixel끼리 합쳐나가는 방식
+* 
+*  sliding window는 너무 많은 영역에 대해 연산을 거치기 때문에 느리다는 단점이 존재
+* 
+*  해당 연산을 거친 ROI 영역을 CNN의 입력 값에 넣어줌 -> 총 2000개의 ROI feature map
 
 ---
 2. CNN
 
->> AlexNet 사용: (ImageNet)으로 pre-train
->>
->> selective search를 통해 추출된 ROI영역을 227x227 사이즈로 고정시키고 마지막에 fc layer를 200,20으로 바꿈
+*  AlexNet 사용: (ImageNet)으로 pre-train
+* 
+*  selective search를 통해 추출된 ROI영역을 227x227 사이즈로 고정시키고 마지막에 fc layer를 200,20으로 바꿈
 
 ---
 3. SVM
 
->> machine learning에서 패턴 인식이나 자료 분석을 위해 사용되는 모델로, 분류 or 회귀에 사용
->>
->> 저자는 Softmax를 사용하지 않은 이유가 Appendix B 부분에서 mAP(mean average precision)가 SVM이 더 좋았다고 함
->>
->> CNN을 통해 저차원으로 mapping된 feature vector들의 점수를 class별로 매기고, object인지 판별 => 즉, classifier역할
+*  machine learning에서 패턴 인식이나 자료 분석을 위해 사용되는 모델로, 분류 or 회귀에 사용
+* 
+*  저자는 Softmax를 사용하지 않은 이유가 Appendix B 부분에서 mAP(mean average precision)가 SVM이 더 좋았다고 함
+* 
+*  CNN을 통해 저차원으로 mapping된 feature vector들의 점수를 class별로 매기고, object인지 판별 => 즉, classifier역할
 
 ---
 4. Bounding Box Regression
 
->> part 1.에서 사용된 selective search가 만든 bounding box는 정확한 위치좌표를 알지 못하기에 object를 정확히 찾는 역할을 추가함
->> 
->> 실제 label(y)와 CNN을 통해 나온 bounding box 간의 차이를 줄이는 역할
->> 
+*  part 1.에서 사용된 selective search가 만든 bounding box는 정확한 위치좌표를 알지 못하기에 object를 정확히 찾는 역할을 추가함
+* 
+*  실제 label(y)와 CNN을 통해 나온 bounding box 간의 차이를 줄이는 역할
+*  
 $$ \begin{align}
 \hat{G_{x}} &= P_{w} d_{x} (P) + P_{x}\\
 \hat{G_{y}} &= P_{h} d_{y} (P) + P_{y}\\
@@ -71,15 +71,16 @@ $$ \begin{align}
 \end{align}
 $$
 
->> G:ground truth, P: predict
->>
->> x,y: box 중심 좌표
->> 
->> w,h: box 너비, 높이
->>
+> G:ground truth, P: predict
+>
+> x,y: box 중심 좌표
+>
+> w,h: box 너비, 높이
+>
 
 ----
 + 장점: CNN을 이용해 각 region의 class를 분류할 수 있음.
 + 
 + 단점: 전체 framework를 end-to-end 방식으로 학습할 수 없음. -> **global optimal solution을 찾기 어려움.**
->> 시간이 오래 걸림 -> real time 분석이 어려움
++ 
++ 단점: 시간이 오래 걸림 -> real time 분석이 어려움
