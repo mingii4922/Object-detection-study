@@ -63,10 +63,13 @@ semantic segmentation: instance segmentation과 달리, 동일한 class를 가�
 >> 실제 label(y)와 CNN을 통해 나온 bounding box 간의 차이를 줄이는 역할
 >> 
 $$
-\hat{G_{x}} = P_{w} d_{x} (P) + P_{x}\\
-\hat{G_{y}} = P_{h} d_{y} (P) + P_{y}\\
-\hat{G_{w}} = P_{w} exp(d_{w} (P))\\
-\hat{G_{h}} = P_{h} exp(d_{h} (P))\\
+\hat{G_{x}} = P_{w} d_{x} (P) + P_{x}$$
+$$
+\hat{G_{y}} = P_{h} d_{y} (P) + P_{y}$$
+$$
+\hat{G_{w}} = P_{w} exp(d_{w} (P))$$
+$$
+\hat{G_{h}} = P_{h} exp(d_{h} (P))
 $$
 
 ----
