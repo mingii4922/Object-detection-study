@@ -31,11 +31,12 @@ semantic segmentation: instance segmentation과 달리, 동일한 class를 가�
 
 ---
 1. Region proposal
-  Selective Search 알고리즘을 이용해 임의의 bounding box를 설정
 
-  Selective Search: segmentation 분야에 많이 쓰이며, object와 주변간의 색감(color), 질감(texture) 등을 파악하여 인접한영역끼리 유사도를 측정해 유사한 pixel끼리 합쳐나가는 방식
-  
-  sliding window는 너무 많은 영역에 대해 연산을 거치기 때문에 느리다는 단점이 존재
+>>Selective Search 알고리즘을 이용해 임의의 bounding box를 설정
+>>
+>> Selective Search: segmentation 분야에 많이 쓰이며, object와 주변간의 색감(color), 질감(texture) 등을 파악하여 인접한영역끼리 유사도를 측정해 유사한 pixel끼리 합쳐나가는 방식
+>>
+>> sliding window는 너무 많은 영역에 대해 연산을 거치기 때문에 느리다는 단점이 존재
 
 ----
 + 장점: CNN을 이용해 각 region의 class를 분류할 수 있음.
