@@ -60,6 +60,7 @@ semantic segmentation: instance segmentation과 달리, 동일한 class를 가�
 4. Bounding Box Regression
 
 >> part 1.에서 사용된 selective search가 만든 bounding box는 정확한 위치좌표를 알지 못하기에 object를 정확히 찾는 역할을 추가함
+>> 
 >> 실제 label(y)와 CNN을 통해 나온 bounding box 간의 차이를 줄이는 역할
 >> 
 $$ \begin{align}
@@ -70,6 +71,15 @@ $$ \begin{align}
 \end{align}
 $$
 
+>> G:ground truth, P: predict
+>>
+>> x,y: box 중심 좌표
+>> 
+>> w,h: box 너비, 높이
+>>
+
 ----
 + 장점: CNN을 이용해 각 region의 class를 분류할 수 있음.
++ 
 + 단점: 전체 framework를 end-to-end 방식으로 학습할 수 없음. -> **global optimal solution을 찾기 어려움.**
+>> 시간이 오래 걸림 -> real time 분석이 어려움
