@@ -9,15 +9,15 @@
 ![object detection](https://github.com/mingii4922/object-detection/assets/79297596/9fdca7c8-5674-40b4-8a3c-e519cd22617e)
 
 ---
-*classification: object의 클래스를 분류
+* classification: object의 클래스를 분류
 
-*classification + localization: signle object에 대해 object의 위치를 bounding box로 찾고, 클래스를 분류
+* classification + localization: signle object에 대해 object의 위치를 bounding box로 찾고, 클래스를 분류
 
-*object detection: multiple objects의 상황에서 각 object에 대해 위와 같은 작업 수행
+* object detection: multiple objects의 상황에서 각 object에 대해 위와 같은 작업 수행
 
-*instance segmentation: object의 위치를 edge로 찾는 것: 각 object는 서로 다른 색(class)으로 구분
+* instance segmentation: object의 위치를 edge로 찾는 것: 각 object는 서로 다른 색(class)으로 구분
 
-*semantic segmentation: instance segmentation과 달리, 동일한 class를 가진 object는 같은 색으로 분할
+* semantic segmentation: instance segmentation과 달리, 동일한 class를 가진 object는 같은 색으로 분할
 
 ---
 <center> <img src="https://github.com/mingii4922/object-detection/assets/79297596/09c675ab-921a-4e14-920c-5ea171c24760" width="800" height="300"> </center> 
