@@ -61,8 +61,9 @@ semantic segmentation: instance segmentation과 달리, 동일한 class를 가�
 
 >> part 1.에서 사용된 selective search가 만든 bounding box는 정확한 위치좌표를 알지 못하기에 object를 정확히 찾는 역할을 추가함
 >> 실제 label(y)와 CNN을 통해 나온 bounding box 간의 차이를 줄이는 역할
-- $$\hat{G}_{x} = P_{w} d_{x} (P) + P_{x}$$
-- $$\hat{G}_{y} = P_{h} d_{y} (P) + P_{y}$$
+>> 
+$$\hat{G}_{x} = P_{w} d_{x} (P) + P_{x}$$
+$$\hat{G}_{y} = P_{h} d_{y} (P) + P_{y}$$
 
 ----
 + 장점: CNN을 이용해 각 region의 class를 분류할 수 있음.
