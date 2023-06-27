@@ -7,6 +7,7 @@ object detection task에서 2014년에 발표된 논문
 2. 학습 데이터 부족 시 pre-train model로 사용가능
 
 ---
+### Main idea
 + 해당 논문은 2-stage detector로 구성됨
   
 1. Region proposal: image에 object가 있을 법한 위치(bounding box)를 추출
