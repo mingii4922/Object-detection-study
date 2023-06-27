@@ -1,14 +1,30 @@
 # R-CNN
 ### Rich feature hierarchies for accurate object detection and semantic segmentation, CVPR, 2014
 ---
-> object detection 분야에서 딥러닝 방식 중 하나
->> 2-stage detector: 1.문제의 위치를 찾고, 2. 분류 문제를 순차적으로 해결
->> 
->> 1-stage detector: 두 문제(위치+분류)를 동시에 수행
+### Abstract
+object detection task에서 2014년에 발표된 논문
+1. object의 위치를 파악하고 분할하기 위해 CNN을 적용
+2. 학습 데이터 부족 시 pre-train model로 사용가능
+
+---
++ 해당 논문은 2-stage detector로 구성됨
+  
+1. Region proposal: image에 object가 있을 법한 위치(bounding box)를 추출
+2. CNN: pre-trained 된 CNN model의 feature map을 활용
+3. SVM(Support Vector Machine): 선형 지도학습모델을 통해 분류
+4. Bounding Box Regression: regressor를 통해 bounding box 위치좌표 찾기
+
 ---
 ![object detection](https://github.com/mingii4922/object-detection/assets/79297596/9fdca7c8-5674-40b4-8a3c-e519cd22617e)
 
 ---
+### 사전 지식
+
+> object detection 분야에서 딥러닝 방식 중 하나
+>> 2-stage detector: 1.문제의 위치를 찾고, 2. 분류 문제를 순차적으로 해결
+>> 
+>> 1-stage detector: 두 문제(위치+분류)를 동시에 수행
+
 * classification: object의 클래스를 분류
 
 * classification + localization: signle object에 대해 object의 위치를 bounding box로 찾고, 클래스를 분류
@@ -21,13 +37,6 @@
 
 ---
 <center> <img src="https://github.com/mingii4922/object-detection/assets/79297596/09c675ab-921a-4e14-920c-5ea171c24760" width="800" height="300"> </center> 
-
-+ 해당 논문은 2-stage detector로 구성됨
-  
-1. Region proposal: image에 object가 있을 법한 위치(bounding box)를 추출
-2. CNN: pre-trained 된 CNN model의 feature map을 활용
-3. SVM(Support Vector Machine): 선형 지도학습모델을 통해 분류
-4. Bounding Box Regression: regressor를 통해 bounding box 위치좌표 찾기
 
 ---
 1. Region proposal
