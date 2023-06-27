@@ -20,7 +20,16 @@ Fast R-CNN은 object로 의심되는 영역을 뽑을 때 selective search 대�
    * Hard sharing: 뿌리(CNN)가 동일하게 시작되어 각각의 representation을 학습
    * Soft sharing: 서로 다른 뿌리(CNN)에서 시작하여 중간중간 정보를 공유함 -> 모델이 더 큰 느낌
 ---
-
+* R-CNN은 selective search로 region proposals로 2000개를 추출하기 때문에 많은 시간이 걸린다는 단점이 존재
+  * 이를 보완하기 위해 SPPNet(Spatial pyramid pooling) 논문을 기반으로 RoI pooling을 활용
 ---
+### 사전지식
 
+* RoI pooling(Region of Interest):
+* Anchor Box: 사전에 정의된 고정된 크기의 box -> (논문에서는 9개로 설정)
+* 이건 Faster R-CNN: RPN(region proposal network): object detection task에서 중요한 작업으로 추출된 feature map을 input으로 활용하는 network를 뜻함.
+  * input -> bounding box -> sort -> NMS
+  * 선택한 bounding box와 anchor box를 비교하여 확률이 가장 높은 object에 대해서 sort를 진행하고 NMS 결과를 수행
+---
+Fast R-CNN은 R-CNN과 달리 feature map을 추출할 때 CNN 한번만 거
 ---
