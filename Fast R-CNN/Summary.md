@@ -3,7 +3,6 @@
 ---
 ### Abstract
 * R-CNN보다 단어 그대로 fast하며, 성능도 향상시킨 논문
-* single-stage로 이루어짐.
 
 ---
 ### Contribution
@@ -20,6 +19,9 @@
     * Hard sharing: 뿌리(CNN)가 동일하게 시작되어 각각의 representation을 학습
     * Soft sharing: 서로 다른 뿌리(CNN)에서 시작하여 중간중간 정보를 공유함 -> 모델이 더 큰 느낌
     * -> 여러 task가 서로 어느정도의 상관관계가 존재한다면 전체적인 성능이 높아짐
+
+* Spatial pyramid pooling networks(SPPnets): 전체 input image에 대한 convolution feature map을 계산하고, shared feature map에서 추출한 feature vector를 사용하여 object detection task를 해결
+
 ---
 <img src="https://github.com/mingii4922/object-detection/assets/79297596/c47bbdb7-afde-4b1a-94d9-792fbed69789" width="600" height="300">
 
