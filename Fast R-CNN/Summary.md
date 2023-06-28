@@ -7,7 +7,7 @@
 ---
 ### Contribution
 * Multi-task learning 적용
-* Single-stage: 기존의 two-stage 기반 R-CNN 대신 single-stage로 학습
+* Single-stage: object 분류와 공간위치를 세분화 하는 방법을 동시에 학습
 * SVM 대신 Softmax 활용
 * end-to-end 방식의 back-propagation이 한번에 가능
 ---
