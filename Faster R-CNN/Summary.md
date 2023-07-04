@@ -21,7 +21,8 @@ selective search:
 
 fine tuning
 
-weight sharing
+weight sharing: CNN에서는 filter가 image를 sliding window 방식으로 순회하며 연산하기 때문에 weight를 공유함 
+> 이와 대조적으로 두가지의 task를 해결할 수 있는 network가 있을 때, 그 두가지 task가 서로 연관이 있다면 하나의 network가 여러 task의 정보를 공유하고 있으므로 weight sharing network라 할 수 있음 (-> few shot learning 공부)
 
 ---
 ### Region proposal network(RPN)
