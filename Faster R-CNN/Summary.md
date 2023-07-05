@@ -45,12 +45,12 @@ SPPnet과 Fast R-CNN은 region proposal 계산에서 bottleneck 현상을 지적
 ---
 ### Region proposal network(RPN)
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/2035e24b-11cc-465b-bb1d-9e9c6dc75baf" width="500" height="200"></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/2035e24b-11cc-465b-bb1d-9e9c6dc75baf" width="500" height="400"></center>
 
 
-1. pretrained model(CNN)을 통해 얻은 feature map ($$H \times W \times C$$)을 입력으로 받음
+1. pretrained model(CNN)을 통해 얻은 feature map ($H \times W \times C$)을 입력으로 받음
 
-2. feature map에 3x3x256 or 3x3x512 Conv layer를 수행 (-> padding 1을 통해 $$(H \times W)$$ 보존)
+2. feature map에 3x3x256 or 3x3x512 Conv layer를 수행 (-> padding 1을 통해 $(H \times W)$ 보존)
 
 3. 1x1 Conv layer를 사용해서 classification과 bounding box regression 예측 값을 따로 계산
 	* FC layer와 비슷한 역할을 담당하지만, local적인 정보를 보존할 수 있음
@@ -63,7 +63,7 @@ SPPnet과 Fast R-CNN은 region proposal 계산에서 bottleneck 현상을 지적
         
 4. classification: 각 anchor box가 object 인지 아닌지 판별하는 것으로 softmax를 적용하여 확률 값 도출
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/2c738f57-e23b-4e5a-b729-52c3a6367794" width="500" height="200"></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/2c738f57-e23b-4e5a-b729-52c3a6367794" width="500" height="400"></center>
 
 5. bounding box regression: Classification을 통해 얻은 물체일 확률 값을 토대로 나열한 후, 각 anchor box의 RoI를 Non-maximum-suppression을 적용하여 구함
 
@@ -73,9 +73,9 @@ confidence 순으로 나열된 box들을 IoU(Intersection over Union)를 통해 
 
 <img src="https://github.com/mingii4922/object-detection/assets/79297596/2d514804-ec76-4160-bdc3-f80fcc11f9a6" height=500 weight=500></center>
 
-1. bounding box($$B$$) 중에서 confidence score가 가장 높은 bounding box($$b_{i}$$)를 list ($$D$$)에 추가
+1. bounding box($$B$$) 중에서 confidence score가 가장 높은 bounding box($b_{i}$)를 list ($D$)에 추가
 	* confidence score가 0.2보다 낮으면 아예 버림
-2. list ($$D$$)에서 confidence score가 가장 높은 bounding box와 ($$B$$)에 담긴 bounding box와의 IoU를 계산해서, IoU가 정한 threshold 보다 크면 ($$B$$)에서 제거
+2. list ($D$)에서 confidence score가 가장 높은 bounding box와 ($B$)에 담긴 bounding box와의 IoU를 계산해서, IoU가 정한 threshold 보다 크면 ($B$)에서 제거
 	* **비슷한 bounding box를 제거하기 위함**
 
 
