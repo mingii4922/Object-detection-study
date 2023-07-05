@@ -40,7 +40,7 @@ SPPnet과 Fast R-CNN은 region proposal 계산에서 bottleneck 현상을 지적
 ---
 ### Region proposal network(RPN)
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/2035e24b-11cc-465b-bb1d-9e9c6dc75baf" width="500" height="200"></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/2035e24b-11cc-465b-bb1d-9e9c6dc75baf" width="500" height="400"></center>
 
 
 1. pretrained model(CNN)을 통해 얻은 feature map ($H \times W \times C$)을 입력으로 받음
@@ -58,7 +58,7 @@ SPPnet과 Fast R-CNN은 region proposal 계산에서 bottleneck 현상을 지적
         
 4. classification: 각 anchor box가 object 인지 아닌지 판별하는 것으로 softmax를 적용하여 확률 값 도출
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/2c738f57-e23b-4e5a-b729-52c3a6367794" width="500" height="200"></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/2c738f57-e23b-4e5a-b729-52c3a6367794" width="500" height="300"></center>
 
 5. bounding box regression: Classification을 통해 얻은 물체일 확률 값을 토대로 나열한 후, 각 anchor box의 RoI를 Non-maximum-suppression을 적용하여 구함
 
@@ -92,7 +92,7 @@ Fast R-CNN과 RPN을 번갈아가면서 학습시키는 전략을 활용
 ---
 ### Loss function
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/8a9711bc-ad83-4160-be6c-76dbf851a94b" height=500 weight=500></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/8a9711bc-ad83-4160-be6c-76dbf851a94b" height=200 weight=500></center>
 
 * $p_{i}$: predict probability of anchor
 * $p_{i}^{\ast}$: ground truth label(1: positive(object맞음), 0: negative(object 아님)
