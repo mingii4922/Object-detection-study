@@ -92,7 +92,7 @@ Fast R-CNN과 RPN을 번갈아가면서 학습시키는 전략을 활용
 ---
 ### Loss function
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/8a9711bc-ad83-4160-be6c-76dbf851a94b" height=200 weight=500></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/8a9711bc-ad83-4160-be6c-76dbf851a94b" height=100 weight=500></center>
 
 * $p_{i}$: predict probability of anchor
 * $p_{i}^{\ast}$: ground truth label(1: positive(object맞음), 0: negative(object 아님)
