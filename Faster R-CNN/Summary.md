@@ -2,18 +2,13 @@
 ### Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks, NIPS, 2016
 
 ---
-### Abstract
+### Contribution
 
 Fast R-CNN을 보완한 논문으로 2-stage 기반 object detection의 근본
 
 SPPnet과 Fast R-CNN은 region proposal 계산에서 bottleneck 현상을 지적함.
 
 이를 보완하기 위해 region proposal network(RPN)을 제안하며, end-to-end framework를 제안
-
-
-
----
-### Contribution
 
 ---
 ### 사전지식
@@ -45,7 +40,7 @@ SPPnet과 Fast R-CNN은 region proposal 계산에서 bottleneck 현상을 지적
 ---
 ### Region proposal network(RPN)
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/2035e24b-11cc-465b-bb1d-9e9c6dc75baf" width="500" height="400"></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/2035e24b-11cc-465b-bb1d-9e9c6dc75baf" width="500" height="200"></center>
 
 
 1. pretrained model(CNN)을 통해 얻은 feature map ($H \times W \times C$)을 입력으로 받음
@@ -63,20 +58,45 @@ SPPnet과 Fast R-CNN은 region proposal 계산에서 bottleneck 현상을 지적
         
 4. classification: 각 anchor box가 object 인지 아닌지 판별하는 것으로 softmax를 적용하여 확률 값 도출
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/2c738f57-e23b-4e5a-b729-52c3a6367794" width="500" height="300"></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/2c738f57-e23b-4e5a-b729-52c3a6367794" width="500" height="200"></center>
 
 5. bounding box regression: Classification을 통해 얻은 물체일 확률 값을 토대로 나열한 후, 각 anchor box의 RoI를 Non-maximum-suppression을 적용하여 구함
 
+6. 결과적으로 classification + bounding box regression을 위해 (K+1),(K+1) x 4의 feature vector를 출력
+	* K: 사전에 정한 object class 개수
+    
 #### Non-maximum-suppression(NMS)
 
 confidence 순으로 나열된 box들을 IoU(Intersection over Union)를 통해 비교하여 최적의 1개 box가 나올때까지 반복하는 알고리즘
 
 <img src="https://github.com/mingii4922/object-detection/assets/79297596/2d514804-ec76-4160-bdc3-f80fcc11f9a6" height=500 weight=500></center>
 
-1. bounding box($$B$$) 중에서 confidence score가 가장 높은 bounding box($b_{i}$)를 list ($D$)에 추가
+1. bounding box($B$) 중에서 confidence score가 가장 높은 bounding box($b_{i}$)를 list ($D$)에 추가
 	* confidence score가 0.2보다 낮으면 아예 버림
-2. list ($D$)에서 confidence score가 가장 높은 bounding box와 ($B$)에 담긴 bounding box와의 IoU를 계산해서, IoU가 정한 threshold 보다 크면 ($B$)에서 제거
+2. list ($D$)에서 confidence score가 가장 높은 bounding box와 ($B$)에 담긴 bounding box와의 IoU를 계산해서, IoU가 정한 threshold 보다 크면 ($$B$$)에서 제거
 	* **비슷한 bounding box를 제거하기 위함**
+
+---
+#### Alternating training
+
+Fast R-CNN과 RPN을 번갈아가면서 학습시키는 전략을 활용
+
+1. anchor box와 ground truth box를 사용해서 RPN을 학습시킴
+	* True / False dataset 구성
+	* pretrained model(VGG16)도 학습
+2. anchor box와 학습된 RPN로 이미지에서 추출된 feature map을 활용해 region proposal을 추출하여 Fast R-CNN 학습
+3. pre-trained VGG16의 weight 고정 후, RPN만 fine tuning
+4. RPN과 pre-trained VGG16의 weight 고정 후, Fast R-CNN만 fine tuning
 
 
 ---
+### Loss function
+
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/8a9711bc-ad83-4160-be6c-76dbf851a94b" height=500 weight=500></center>
+
+* $p_{i}$: predict probability of anchor
+* $p_{i}^{\ast}$: ground truth label(1: positive(object맞음), 0: negative(object 아님)
+* $\lambda$: $N_{cls}$와 $N_{reg}$의 불균형 방지를 위해 사용 
+    * cls의 batch가 256, reg의 location이 2,500이면 $\lambda$를 10으로 설정하는 느낌
+* $t_{i}$: predict bounding box
+* $t_{i}^{\ast}$: ground truth box
