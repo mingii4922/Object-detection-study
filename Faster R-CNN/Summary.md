@@ -63,7 +63,7 @@ SPPnet과 Fast R-CNN은 region proposal 계산에서 bottleneck 현상을 지적
         
 4. classification: 각 anchor box가 object 인지 아닌지 판별하는 것으로 softmax를 적용하여 확률 값 도출
 
-<img src="https://github.com/mingii4922/object-detection/assets/79297596/2c738f57-e23b-4e5a-b729-52c3a6367794" width="500" height="400"></center>
+<img src="https://github.com/mingii4922/object-detection/assets/79297596/2c738f57-e23b-4e5a-b729-52c3a6367794" width="500" height="300"></center>
 
 5. bounding box regression: Classification을 통해 얻은 물체일 확률 값을 토대로 나열한 후, 각 anchor box의 RoI를 Non-maximum-suppression을 적용하여 구함
 
